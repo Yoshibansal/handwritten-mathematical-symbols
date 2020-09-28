@@ -26,3 +26,14 @@ Hand_written
     - symbols.csv
     - verification-task
    - verification-task
+
+**Sample Images**
+
+<img src = "Sample_images/v2-02130.png" width="40" height="40">
+<img src = "Sample_images/v2-02362.png" width="40" height="40">
+<img src = "Sample_images/v2-03594.png" width="40" height="40">
+
+**Sample Labels**
+
+<img src = "Label_samples/sample-2.png" width="360" height="160">
+<img src = "Label_samples/sample-4.png" width="360" height="160">
