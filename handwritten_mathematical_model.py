@@ -20,25 +20,14 @@
 #     
 # Note:- You can use hasyv2 but for this I have not used that
 
-# In[1]:
-
-
 #Just to check
 from IPython.display import Image
 Image(url='hasy-data/v2-00010.png')
-
-
-# In[2]:
-
 
 #importing libraries for preprocessing task
 import csv
 from PIL import Image as pil_image
 import keras.preprocessing.image
-
-
-# In[3]:
-
 
 #load all images and save there classes
 
@@ -63,9 +52,6 @@ print("Total number of images: ", len(imgs)) #print the total number of images
 # 
 # 20% -> test
 
-# In[4]:
-
-
 import random
 random.shuffle(imgs)
 split_idx = int(0.8*len(imgs))
@@ -73,10 +59,6 @@ train = imgs[:split_idx]
 test = imgs[split_idx:]
 
 #Later take 20% from train for validation
-
-
-# In[5]:
-
 
 import numpy as np
 
@@ -89,17 +71,9 @@ test_output = np.asarray(list(map(lambda row: row[1], test)))
 
 # learn about oneHotEncoder
 # https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html
-
-# In[6]:
-
-
 #our labels are in the text format therefore using oneHotEncoder to convert them
     
 from sklearn.preprocessing import LabelEncoder, OneHotEncoder
-
-
-# In[7]:
-
 
 label_encoder = LabelEncoder()
 integer_encoded = label_encoder.fit_transform(classes)
@@ -121,9 +95,6 @@ print("Shape of the input image: ", np.shape(train_input[0]))
 
 # ## Model
 
-# In[8]:
-
-
 #importing libraries
 
 import tensorflow as tf
@@ -141,10 +112,6 @@ from tensorflow.keras.layers import (
 
 # This is very basic CNN architecture with some convolution layer followed by max pooling layer
 # which is then followed by flatten and some dense layer.
-# 
-
-# In[9]:
-
 
 #model architecture
 
@@ -159,10 +126,6 @@ model = Sequential([
     Dense(num_classes, activation='softmax')
 ])
 
-
-# In[16]:
-
-
 #compile model
 learning_rate = 1e-5 #1e-2 (0.01)
 
@@ -172,17 +135,10 @@ model.compile(
             metrics = ['accuracy'])
 
 
-# In[17]:
-
-
 model.summary()
 
 
 # Training
-
-# In[18]:
-
-
 BATCH_SIZE = 32
 EPOCHS = 15 #10
 VALIDATION_SPLIT = 0.2
@@ -200,9 +156,6 @@ history = model.fit(train_input, train_output,
 # Plotting the graphs: 
 #     1. Training and validation accuracy
 #     2. Training and validation loss
-
-# In[19]:
-
 
 import matplotlib.pyplot as plt
 
@@ -235,18 +188,11 @@ plt.show()
 
 
 # ## Saving model
-
-# In[20]:
-
-
 model.save('mathSymbolsPredictor.model')
 np.save('classes.npy', label_encoder.classes_)
 
 
 # ## New predictions
-
-# In[22]:
-
 
 import keras.models
 #model_ = keras.models.load('mathSymbolsPredictor.model')
@@ -263,31 +209,13 @@ inverted = label_encoder2.inverse_transform([np.argmax(predicted)])
 print(inverted[0], np.max(predicted))
 (Image(url=PATH))
 
-
-# In[ ]:
-
-
-
-
-
 # # Convert your model into .tflite 
 # ## To deploy it on an application
-
-# In[ ]:
-
 
 RPS_SAVED_MODEL = "rps_saved_model"
 tf.saved_model.save(model, RPS_SAVED_MODEL)
 
-
-# In[ ]:
-
-
 get_ipython().run_cell_magic('bash', '-s $RPS_SAVED_MODEL', 'saved_model_cli show --dir $1 --tag_set serve --signature_def serving_default')
-
-
-# In[ ]:
-
 
 loaded = tf.saved_model.load(RPS_SAVED_MODEL)
 print(list(loaded.signatures.keys()))
@@ -298,10 +226,12 @@ converter = tf.lite.TFLiteConverter.from_saved_model(RPS_SAVED_MODEL)
 converter.optimizations = [tf.lite.Optimize.OPTIMIZE_FOR_SIZE]
 tflite_model = converter.convert()
 
-
-# In[ ]:
-
-
 import tensorflow as tf
 tflite_model_file = 'handwritten_mathematical_symbol_model_v1.tflite'
+
+
+
+
+
+
 
