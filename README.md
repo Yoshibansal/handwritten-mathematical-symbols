@@ -12,3 +12,15 @@ Content
 HASY contains 32px x 32px images of 369 symbol classes. In total, HASY contains over 150,000 instances of handwritten symbols.
 
 This is basically a multiclass classification problem which I solved using CNN followed by Max pooling and dense layers.
+
+Hand_written
+  - handwritten_mathematical_model.ipynb
+  - hasy-data
+  - hasy-data-labels
+  - symbols.csv
+  - hasyv2
+    - hasy-data
+    - hasy-data-labels
+    - symbols.csv
+    - verification-task
+   - verification-task
