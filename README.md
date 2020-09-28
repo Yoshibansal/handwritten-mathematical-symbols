@@ -37,3 +37,4 @@ Hand_written
 
 <img src = "Label_samples/sample-2.png" width="360" height="160">
 <img src = "Label_samples/sample-4.png" width="360" height="160">
+
