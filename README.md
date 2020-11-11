@@ -1,5 +1,6 @@
 # handwritten-mathematical-symbols
-Identifying handwritten mathematical symbols deep neural networks and convolution
+1. Identifying handwritten mathematical symbols using deep neural networks and convolution. 
+2. Saving and converting trained model into tflite (ready to run on mobile as well as edge devices).
 
 Link of dataset:
   https://www.kaggle.com/guru001/hasyv2
