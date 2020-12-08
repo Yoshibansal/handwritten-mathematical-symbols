@@ -30,9 +30,11 @@ Hand_written
 
 **Sample Images**
 
+<p>
 <img src = "Sample_images/v2-02130.png" width="40" height="40">
 <img src = "Sample_images/v2-02362.png" width="40" height="40">
 <img src = "Sample_images/v2-03594.png" width="40" height="40">
+<p />
 
 **Sample Labels**
 
